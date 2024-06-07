@@ -17,6 +17,9 @@
 		C461979F2C131684007D3B6B /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = C461979E2C131684007D3B6B /* Alamofire */; };
 		C46197A22C131695007D3B6B /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = C46197A12C131695007D3B6B /* SnapKit */; };
 		C46197A62C131BEC007D3B6B /* Lotto.swift in Sources */ = {isa = PBXBuildFile; fileRef = C46197A52C131BEC007D3B6B /* Lotto.swift */; };
+		C46197A92C133F18007D3B6B /* LottoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C46197A82C133F18007D3B6B /* LottoTableViewCell.swift */; };
+		C46197AC2C13401E007D3B6B /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = C46197AB2C13401D007D3B6B /* Common.swift */; };
+		C46197AF2C1340DA007D3B6B /* ReuseIdProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C46197AE2C1340DA007D3B6B /* ReuseIdProtocol.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +34,9 @@
 		C461979A2C12FD23007D3B6B /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		C461979B2C12FE56007D3B6B /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		C46197A52C131BEC007D3B6B /* Lotto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lotto.swift; sourceTree = "<group>"; };
+		C46197A82C133F18007D3B6B /* LottoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottoTableViewCell.swift; sourceTree = "<group>"; };
+		C46197AB2C13401D007D3B6B /* Common.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Common.swift; sourceTree = "<group>"; };
+		C46197AE2C1340DA007D3B6B /* ReuseIdProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReuseIdProtocol.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +73,9 @@
 		C46197832C12FAB5007D3B6B /* dhlottery-api */ = {
 			isa = PBXGroup;
 			children = (
+				C46197AD2C1340C0007D3B6B /* Protocol */,
+				C46197AA2C13400B007D3B6B /* Constant */,
+				C46197A72C133F03007D3B6B /* Cell */,
 				C46197A42C131BD8007D3B6B /* Model */,
 				C46197A32C13195C007D3B6B /* Controller */,
 				C46197842C12FAB5007D3B6B /* AppDelegate.swift */,
@@ -93,6 +102,30 @@
 				C46197A52C131BEC007D3B6B /* Lotto.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		C46197A72C133F03007D3B6B /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				C46197A82C133F18007D3B6B /* LottoTableViewCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		C46197AA2C13400B007D3B6B /* Constant */ = {
+			isa = PBXGroup;
+			children = (
+				C46197AB2C13401D007D3B6B /* Common.swift */,
+			);
+			path = Constant;
+			sourceTree = "<group>";
+		};
+		C46197AD2C1340C0007D3B6B /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				C46197AE2C1340DA007D3B6B /* ReuseIdProtocol.swift */,
+			);
+			path = Protocol;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -177,8 +210,11 @@
 				C46197892C12FAB5007D3B6B /* LottoViewController.swift in Sources */,
 				C46197A62C131BEC007D3B6B /* Lotto.swift in Sources */,
 				C46197852C12FAB5007D3B6B /* AppDelegate.swift in Sources */,
+				C46197AF2C1340DA007D3B6B /* ReuseIdProtocol.swift in Sources */,
 				C461979C2C12FE56007D3B6B /* API.swift in Sources */,
+				C46197A92C133F18007D3B6B /* LottoTableViewCell.swift in Sources */,
 				C46197872C12FAB5007D3B6B /* SceneDelegate.swift in Sources */,
+				C46197AC2C13401E007D3B6B /* Common.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

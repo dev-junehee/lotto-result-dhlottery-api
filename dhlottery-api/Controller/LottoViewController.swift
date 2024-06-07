@@ -53,6 +53,10 @@ class LottoViewController: UIViewController {
             lottoInfoStack.addArrangedSubview($0)
         }
         
+        lottoTableView.delegate = self
+        lottoTableView.dataSource = self
+        lottoTableView.register(LottoTableViewCell.self, forCellReuseIdentifier: LottoTableViewCell.id)
+        
         picker.delegate = self
         pickerField.inputView = picker
         
@@ -82,13 +86,10 @@ class LottoViewController: UIViewController {
         pickerField.borderStyle = .roundedRect
         pickerField.textAlignment = .center
         
-//        lottoInfoStack.backgroundColor = .cyan
         numberInfoLabel.font = .systemFont(ofSize: 16, weight: .semibold)
         
         dateInfoLabel.textColor = .gray
         dateInfoLabel.font = .systemFont(ofSize: 14)
-        
-        lottoTableView.backgroundColor = .lightGray
     }
     
     func configureData() {
@@ -96,10 +97,6 @@ class LottoViewController: UIViewController {
         
         numberInfoLabel.text = "당첨번호 안내"
         dateInfoLabel.text = "yyyy-MM-dd 추첨"
-    }
-    
-    func configureHandler() {
-        
     }
     
     func callRequest() {
@@ -112,6 +109,7 @@ class LottoViewController: UIViewController {
                 self.lottoData = [value]
                 self.dateInfoLabel.text = "\(self.lottoData[0].drwNoDate) 추첨"
                 self.view.reloadInputViews()
+                self.lottoTableView.reloadData()
             case .failure(let error):
                 print("로또 조회 실패", error)
             }
@@ -132,7 +130,6 @@ class LottoViewController: UIViewController {
     @objc func selectBarBtnClicked() {
         print("회차 선택", pickerField.text!)
         view.endEditing(true)
-        
         callRequest()
     }
 }
@@ -140,7 +137,6 @@ class LottoViewController: UIViewController {
 
 // MARK: LottoViewController 익스텐션
 // pickerView
-
 extension LottoViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
@@ -156,6 +152,28 @@ extension LottoViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         pickerField.text = "\(row + 1)"
+    }
+}
+
+extension LottoViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = lottoTableView.dequeueReusableCell(withIdentifier: LottoTableViewCell.id, for: indexPath) as! LottoTableViewCell
+
+        let lotto = lottoData
+        
+        cell.selectionStyle = .none
+        
+//        cell.lottoData = lottoData
+        cell.configureCellHierarchy()
+        cell.configureCellLayout()
+        cell.configureCellUI()
+        cell.configureCellData(data: lotto)
+        
+        return cell
     }
     
 }
