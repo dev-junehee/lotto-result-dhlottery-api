@@ -9,22 +9,28 @@
 /* Begin PBXBuildFile section */
 		C46197852C12FAB5007D3B6B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C46197842C12FAB5007D3B6B /* AppDelegate.swift */; };
 		C46197872C12FAB5007D3B6B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C46197862C12FAB5007D3B6B /* SceneDelegate.swift */; };
-		C46197892C12FAB5007D3B6B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C46197882C12FAB5007D3B6B /* ViewController.swift */; };
+		C46197892C12FAB5007D3B6B /* LottoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C46197882C12FAB5007D3B6B /* LottoViewController.swift */; };
 		C461978E2C12FAB7007D3B6B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C461978D2C12FAB7007D3B6B /* Assets.xcassets */; };
 		C46197912C12FAB7007D3B6B /* Base in Resources */ = {isa = PBXBuildFile; fileRef = C46197902C12FAB7007D3B6B /* Base */; };
 		C46197992C12FB98007D3B6B /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = C46197982C12FB98007D3B6B /* .gitignore */; };
+		C461979C2C12FE56007D3B6B /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = C461979B2C12FE56007D3B6B /* API.swift */; };
+		C461979F2C131684007D3B6B /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = C461979E2C131684007D3B6B /* Alamofire */; };
+		C46197A22C131695007D3B6B /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = C46197A12C131695007D3B6B /* SnapKit */; };
+		C46197A62C131BEC007D3B6B /* Lotto.swift in Sources */ = {isa = PBXBuildFile; fileRef = C46197A52C131BEC007D3B6B /* Lotto.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		C46197812C12FAB5007D3B6B /* dhlottery-api.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "dhlottery-api.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C46197842C12FAB5007D3B6B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C46197862C12FAB5007D3B6B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		C46197882C12FAB5007D3B6B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		C46197882C12FAB5007D3B6B /* LottoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottoViewController.swift; sourceTree = "<group>"; };
 		C461978D2C12FAB7007D3B6B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C46197902C12FAB7007D3B6B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C46197922C12FAB7007D3B6B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C46197982C12FB98007D3B6B /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		C461979A2C12FD23007D3B6B /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		C461979B2C12FE56007D3B6B /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		C46197A52C131BEC007D3B6B /* Lotto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lotto.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -32,6 +38,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C461979F2C131684007D3B6B /* Alamofire in Frameworks */,
+				C46197A22C131695007D3B6B /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -59,14 +67,32 @@
 		C46197832C12FAB5007D3B6B /* dhlottery-api */ = {
 			isa = PBXGroup;
 			children = (
+				C46197A42C131BD8007D3B6B /* Model */,
+				C46197A32C13195C007D3B6B /* Controller */,
 				C46197842C12FAB5007D3B6B /* AppDelegate.swift */,
 				C46197862C12FAB5007D3B6B /* SceneDelegate.swift */,
-				C46197882C12FAB5007D3B6B /* ViewController.swift */,
 				C461978D2C12FAB7007D3B6B /* Assets.xcassets */,
 				C461978F2C12FAB7007D3B6B /* LaunchScreen.storyboard */,
 				C46197922C12FAB7007D3B6B /* Info.plist */,
+				C461979B2C12FE56007D3B6B /* API.swift */,
 			);
 			path = "dhlottery-api";
+			sourceTree = "<group>";
+		};
+		C46197A32C13195C007D3B6B /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				C46197882C12FAB5007D3B6B /* LottoViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		C46197A42C131BD8007D3B6B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				C46197A52C131BEC007D3B6B /* Lotto.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -85,6 +111,10 @@
 			dependencies = (
 			);
 			name = "dhlottery-api";
+			packageProductDependencies = (
+				C461979E2C131684007D3B6B /* Alamofire */,
+				C46197A12C131695007D3B6B /* SnapKit */,
+			);
 			productName = "dhlottery-api";
 			productReference = C46197812C12FAB5007D3B6B /* dhlottery-api.app */;
 			productType = "com.apple.product-type.application";
@@ -113,6 +143,10 @@
 				Base,
 			);
 			mainGroup = C46197782C12FAB5007D3B6B;
+			packageReferences = (
+				C461979D2C131684007D3B6B /* XCRemoteSwiftPackageReference "Alamofire" */,
+				C46197A02C131695007D3B6B /* XCRemoteSwiftPackageReference "SnapKit" */,
+			);
 			productRefGroup = C46197822C12FAB5007D3B6B /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -140,8 +174,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C46197892C12FAB5007D3B6B /* ViewController.swift in Sources */,
+				C46197892C12FAB5007D3B6B /* LottoViewController.swift in Sources */,
+				C46197A62C131BEC007D3B6B /* Lotto.swift in Sources */,
 				C46197852C12FAB5007D3B6B /* AppDelegate.swift in Sources */,
+				C461979C2C12FE56007D3B6B /* API.swift in Sources */,
 				C46197872C12FAB5007D3B6B /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -367,6 +403,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		C461979D2C131684007D3B6B /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.9.1;
+			};
+		};
+		C46197A02C131695007D3B6B /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.7.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		C461979E2C131684007D3B6B /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C461979D2C131684007D3B6B /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+		C46197A12C131695007D3B6B /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C46197A02C131695007D3B6B /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = C46197792C12FAB5007D3B6B /* Project object */;
 }
