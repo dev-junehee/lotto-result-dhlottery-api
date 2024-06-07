@@ -16,17 +16,15 @@ class LottoViewController: UIViewController {
     let pickerField = UITextField()
     
     let lottoInfoStack = UIStackView()
+    
     let numberInfoLabel = UILabel()
-    let dateInfoLAbel = UILabel()
+    var dateInfoLabel = UILabel()
     
-    let drwNoLabel = UILabel()
-    
-    let drwtNoStack = UIStackView()
-    
+    let lottoTableView = UITableView()
     
     // pickerView 데이터
     var lottoData: [Lotto] = []
-    var recentDrwNo = "1121"
+    var recentDrwNo = "1122"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,34 +34,71 @@ class LottoViewController: UIViewController {
         configureLayout()
         configureUI()
         configureData()
+        setBarBtnItem()
         callRequest()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        pickerField.tintColor = .clear
+    }
+    
     func configureHierarchy() {
-        let subviews = [pickerField]
+        let subviews = [pickerField, lottoInfoStack, lottoTableView]
         subviews.forEach {
             view.addSubview($0)
         }
         
+        let infoViews = [numberInfoLabel, dateInfoLabel]
+        infoViews.forEach {
+            lottoInfoStack.addArrangedSubview($0)
+        }
+        
         picker.delegate = self
         pickerField.inputView = picker
+        
+        navigationController?.isToolbarHidden = false
     }
 
     func configureLayout() {
         pickerField.snp.makeConstraints { make in
-            make.top.equalTo(view.safeAreaLayoutGuide)
-            make.horizontalEdges.equalTo(view.safeAreaLayoutGuide).inset(16)
+            make.top.horizontalEdges.equalTo(view.safeAreaLayoutGuide).inset(16)
             make.height.equalTo(44)
+        }
+        
+        lottoInfoStack.snp.makeConstraints { make in
+            make.top.equalTo(pickerField.snp.bottom).offset(24)
+            make.horizontalEdges.equalTo(view.safeAreaLayoutGuide).inset(16)
+        }
+        
+        lottoTableView.snp.makeConstraints { make in
+            make.top.equalTo(lottoInfoStack.snp.bottom).offset(24)
+            make.horizontalEdges.equalTo(view.safeAreaLayoutGuide).inset(16)
+            make.bottom.equalTo(view.safeAreaLayoutGuide)
         }
     }
     
     func configureUI() {
+        pickerField.font = .systemFont(ofSize: 16)
         pickerField.borderStyle = .roundedRect
         pickerField.textAlignment = .center
         
+//        lottoInfoStack.backgroundColor = .cyan
+        numberInfoLabel.font = .systemFont(ofSize: 16, weight: .semibold)
+        
+        dateInfoLabel.textColor = .gray
+        dateInfoLabel.font = .systemFont(ofSize: 14)
+        
+        lottoTableView.backgroundColor = .lightGray
     }
     
     func configureData() {
+        pickerField.placeholder = "로또 회차를 선택하세요!"
+        
+        numberInfoLabel.text = "당첨번호 안내"
+        dateInfoLabel.text = "yyyy-MM-dd 추첨"
+    }
+    
+    func configureHandler() {
         
     }
     
@@ -73,14 +108,32 @@ class LottoViewController: UIViewController {
         AF.request(URL).responseDecodable(of: Lotto.self) { res in
             switch res.result {
             case .success(let value):
-                print(value)
+                print("로또 조회 성공")
                 self.lottoData = [value]
-                print("1", self.lottoData)
+                self.dateInfoLabel.text = "\(self.lottoData[0].drwNoDate) 추첨"
+                self.view.reloadInputViews()
             case .failure(let error):
-                print(error)
+                print("로또 조회 실패", error)
             }
         }
+    }
+    
+    
+    // Bar Button
+    func setBarBtnItem() {
+        let toolBar = UIToolbar()
+        toolBar.sizeToFit()
+        let selectBtn = UIBarButtonItem(title: "선택", image: nil, target: self, action: #selector(selectBarBtnClicked))
+        toolBar.setItems([selectBtn], animated: true)
+        toolBar.isUserInteractionEnabled = true
+        pickerField.inputAccessoryView = toolBar
+    }
+    
+    @objc func selectBarBtnClicked() {
+        print("회차 선택", pickerField.text!)
+        view.endEditing(true)
         
+        callRequest()
     }
 }
 

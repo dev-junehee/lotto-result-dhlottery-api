@@ -17,7 +17,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let scene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: scene)
         
-        let vc = LottoViewController()
+        
+        let vc = UINavigationController(rootViewController: LottoViewController())
         window?.rootViewController = vc
         window?.makeKeyAndVisible()
     }
