@@ -65,7 +65,7 @@ class LottoViewController: UIViewController {
 
     func configureLayout() {
         pickerField.snp.makeConstraints { make in
-            make.top.horizontalEdges.equalTo(view.safeAreaLayoutGuide).inset(16)
+            make.top.horizontalEdges.equalTo(view.safeAreaLayoutGuide).inset(8)
             make.height.equalTo(44)
         }
         
@@ -101,7 +101,6 @@ class LottoViewController: UIViewController {
     
     func callRequest() {
         let URL = "\(API.URL)\(recentDrwNo)"
-        
         AF.request(URL).responseDecodable(of: Lotto.self) { res in
             switch res.result {
             case .success(let value):
@@ -155,6 +154,7 @@ extension LottoViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     }
 }
 
+// tableView
 extension LottoViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1

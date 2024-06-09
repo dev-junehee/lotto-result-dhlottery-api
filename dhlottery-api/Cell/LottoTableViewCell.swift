@@ -77,7 +77,7 @@ class LottoTableViewCell: UITableViewCell {
         
         // 당첨 결과 스택
         drwtNumsStack.snp.makeConstraints { make in
-            make.top.equalTo(resultTextLabel.snp.bottom)
+            make.top.equalTo(resultTextLabel.snp.bottom).offset(8)
             make.horizontalEdges.equalTo(contentView)
             make.height.equalTo(50)
         }
@@ -94,12 +94,17 @@ class LottoTableViewCell: UITableViewCell {
     func configureCellUI() {
         resultTextLabel.font = .systemFont(ofSize: 24, weight: .semibold)
         resultTextLabel.textAlignment = .center
+        resultTextLabel.backgroundColor = .clear
+        resultTextLabel.layer.borderColor = UIColor.clear.cgColor
+        
+        drwtNumsStack.backgroundColor = .clear
         
         numsViews.forEach {
             $0.clipsToBounds = true
             $0.layer.cornerRadius = 25
             $0.textAlignment = .center
             $0.textColor = .white
+            $0.font = .systemFont(ofSize: 18, weight: .semibold)
             $0.backgroundColor = Color.randomBgColor()
         }
         
